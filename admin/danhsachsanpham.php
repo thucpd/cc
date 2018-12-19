@@ -2,9 +2,14 @@
     session_start();
     include '../DB/db.php'; 
     $connection = db_connect();
-    $sql = "SELECT * FROM sanpham where deleted = 0";
-    $results = db_select($connection,$sql);
-
+    if(isset($_POST['search']) && $_POST['search'] != ''){
+        $search = $_POST['search'];
+        $sql = "SELECT * FROM sanpham where deleted = 0 and tensanpham like '%$search%'";
+        $results = db_select($connection,$sql);
+    }else{
+        $sql = "SELECT * FROM sanpham where deleted = 0";
+        $results = db_select($connection,$sql);
+    }
 ?>
 
 
@@ -49,7 +54,7 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="">
+                    <a href="http://localhost/cc/admin/danhsachsanpham.php">
                         <i class="pe-7s-note2"></i>
                         <p>Danh sách sản phẩm</p>
                     </a>
@@ -100,6 +105,16 @@
         <div class="content">
             <div class="container-fluid">
             <div class="row">
+                <div>
+                    <form action="danhsachsanpham.php" method ="POST">
+                        <div class="form-group pull-right">
+                        <input id="search" name = "search" type="text" placehoder="Search"> 
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row" style="padding-bottom: 10px;">
                 <a href = "http://localhost:8081/Nhom07_WebsiteBuonBanBanh/admin/themsp.php" class="btn btn-info btn-fill pull-right">Thêm</a>
             </div>
                 <div class="row">
@@ -124,10 +139,13 @@
                                         <td> <?php echo $value['giatien'] ?></td>
                                         <td> <?php echo $value['loaisanpham'] ?></td>
                                         <td> <?php echo $value['soluong'] ?></td>
-                                        <td> <?php echo $value['hinh'] ?></td>
+                                        <td> 
+                                            <div>
+                                                <img style="max-width: 65px;border-radius: 10px;" src="../img/admin/<?php echo $value['hinh'] ?>" alt="">
+                                            </div>
                                         <td>
-                                        <button type="button" class="btn btn-primary">Sửa</button>
-                                        <a href = "http://localhost:8081/Nhom07_WebsiteBuonBanBanh/admin/xoasp.php?id=<?php echo $value['idsanpham']?>" class="btn btn-danger btn-fill">Xoá</a>
+                                        <a href = "http://localhost/cc/admin/themsp?id=<?php echo $value['idsanpham']?>" class="btn btn-primary btn-fill">Sửa</a>
+                                        <a href = "http://localhost/cc/admin/xoasp.php?id=<?php echo $value['idsanpham']?>" class="btn btn-danger btn-fill">Xoá</a>
                                         </td>
                                     </tr>
                                 <?php } ?>

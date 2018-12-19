@@ -8,15 +8,40 @@
         $giatien = $_POST['giatien'];
         $loaisp = $_POST['loaisp'];
         $soluong = $_POST['soluong'];
-        $hinh = 'demo';
+
+        /// Xử lý upload file
+
+        define ('SITE_ROOT', realpath(dirname(__FILE__)));
+        $uploads_dir = '../img/admin/';
+        $tmp_name = $_FILES["hinh"]["tmp_name"];
+        $hinh = basename($_FILES["hinh"]["name"]);
         
-        $sql = "INSERT INTO sanpham (tensanpham, giatien, loaisanpham,soluong,hinh) VALUES ('$tensp',$giatien,$loaisp,$soluong,'$hinh')";
-        $result = db_insert($connection,$sql);
+        if($_POST['idsp'] == ''){
+            move_uploaded_file($tmp_name, $uploads_dir.$hinh);
+            $sql = "INSERT INTO sanpham (tensanpham, giatien, loaisanpham,soluong,hinh) VALUES ('$tensp',$giatien,$loaisp,$soluong,'$hinh')";
+            $result = db_insert($connection,$sql);
+        }
+        else{
+            move_uploaded_file($tmp_name, $uploads_dir.$hinh);
+            $idsp = $_POST['idsp'];
+            $sql = "UPDATE sanpham SET tensanpham = '$tensp', giatien = $giatien, loaisanpham = $loaisp, soluong = $soluong, hinh = '$hinh' WHERE idsanpham = $idsp";
+            $result = db_update($connection,$sql);
+        }
         if($result){
             header("location:http://localhost:8081/Nhom07_WebsiteBuonBanBanh/admin/danhsachsanpham.php");
         }else{
             echo "Thêm thất bại";die();
         }
+    }
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+        $sql = "SELECT * FROM sanpham where idsanpham = $id";
+        if($connection){
+            $connection = db_connect();
+        }
+        $results = db_select($connection,$sql);
+        $result = $results[0];
+        //var_dump($result);die;
     }
 
 ?>
@@ -63,7 +88,6 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="">
                         <i class="pe-7s-note2"></i>
                         <p>Danh sách sản phẩm</p>
                     </a>
@@ -116,32 +140,39 @@
             <div class="">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Thêm sản phẩm</h4>
+                                <h4 class="title"> 
+                                <?php  if(isset($result)) {  
+                                    echo "Sửa sản phẩm"; ?>
+                                <?php } else {
+                                    echo "Thêm sản phẩm"; ?>
+                                    <?php } ?>
+                                </h4>
                             </div>
                             <div class="content">
-                                <form action="themsp.php" method="POST">
+                                <form action="themsp.php" method="POST" enctype="multipart/form-data">
+                                    <input type="hidden" id="idsp" name="idsp" value="<?php if(isset($result))  echo $result['idsanpham'] ?>">
                                     <div class="form-group">
                                         <label for="formGroupExampleInput">Tên sản phẩm</label>
-                                        <input type="text" class="form-control" name= "tensp" id="tensp" placeholder="Example input">
+                                        <input type="text" class="form-control" name= "tensp" id="tensp" placeholder="Example input" value = "<?php if(isset($result)) echo $result['tensanpham'] ?>" >
                                     </div>
                                     <div class="form-group">
                                         <label for="formGroupExampleInput2">Giá tiền</label>
-                                        <input type="text" class="form-control" name= "giatien" id="giatien" placeholder="Another input">
+                                        <input type="text" class="form-control" name= "giatien" id="giatien" placeholder="Another input" value = "<?php if(isset($result)) echo $result['giatien'] ?>" > 
                                     </div>
                                     <div class="form-group">
                                         <label for="formGroupExampleInput2">Loại sản phẩm</label>
-                                        <input type="text" class="form-control" name= "loaisp" id="loaisp" placeholder="Another input">
+                                        <input type="text" class="form-control" name= "loaisp" id="loaisp" placeholder="Another input" value = "<?php if(isset($result)) echo $result['loaisanpham'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="formGroupExampleInput2">Số lượng</label>
-                                        <input type="text" class="form-control" name= "soluong" id="soluong" placeholder="Another input">
+                                        <input type="text" class="form-control" name= "soluong" id="soluong" placeholder="Another input" value = "<?php if(isset($result)) echo $result['soluong'] ?>">
                                     </div>
-                                    <!-- <div class="form-group">
-                                        <label for="formGroupExampleInput2">Hình</label>
-                                        <input type="text" class="" name= "hinh" id="hinh" placeholder="Another input">
-                                    </div> -->
                                     <div class="form-group">
-                                        <button type ="submit" class="btn btn-primary">Thêm</button>
+                                        <label for="formGroupExampleInput2">Hình</label>
+                                        <input type="file" class="" name= "hinh" id="hinh" placeholder="Another input">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type ="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
