@@ -1,10 +1,10 @@
 <?php
 
     session_start();
-    include '../DB/db.php'; 
+    include '../Model/db.php'; 
     //Kiểm tra session đăng nhập của user, để chuyển hướng qua trang khác
     if(isset($_SESSION['user_name'])){
-        header('Location: http://localhost:8081/Nhom07_WebsiteBuonBanBanh/admin/danhsachsanpham.php');
+        header('Location: danhsachsanpham.php');
     }
     //Nhận username và password khi submit form  
     if(isset($_POST['username']) && isset($_POST['password']) && $_POST['username']!= '' && $_POST['password'] != ''){
@@ -18,7 +18,7 @@
         if($result){
             // đăng nhập thành công thì chuyển hướng qua trang danhsachsanpham và lưu session
             $_SESSION['user_name'] = $result[0]['user_name'];
-            header('Location: http://localhost:8081/Nhom07_WebsiteBuonBanBanh/admin/danhsachsanpham.php');
+            header('Location: danhsachsanpham.php');
         }
 
     }
@@ -29,7 +29,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-<link rel="stylesheet" href="../css/admin/style.css">
+<link rel="stylesheet" href="../Assets/css/style.css">
 <div class="container">
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
