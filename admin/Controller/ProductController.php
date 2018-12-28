@@ -23,7 +23,7 @@
             $giatien = $_POST['giatien'];
             $loaisp = $_POST['loaisp'];
             $soluong = $_POST['soluong'];
-    
+            $detail = $_POST['detail'];
             /// Xử lý upload file
     
             define ('SITE_ROOT', realpath(dirname(__FILE__)));
@@ -33,17 +33,17 @@
             
             if($_POST['idsp'] == ''){
                 move_uploaded_file($tmp_name, $uploads_dir.$hinh);
-                $sql = "INSERT INTO sanpham (tensanpham, giatien, loaisanpham,soluong,hinh) VALUES ('$tensp',$giatien,$loaisp,$soluong,'$hinh')";
+                $sql = "INSERT INTO sanpham (tensanpham, giatien, loaisanpham,soluong,hinh,detail) VALUES ('$tensp',$giatien,$loaisp,$soluong,'$hinh','$detail')";
                 $result = db_insert($connection,$sql);
             }
             else{
                 move_uploaded_file($tmp_name, $uploads_dir.$hinh);
                 $idsp = $_POST['idsp'];
-                $sql = "UPDATE sanpham SET tensanpham = '$tensp', giatien = $giatien, loaisanpham = $loaisp, soluong = $soluong, hinh = '$hinh' WHERE idsanpham = $idsp";
+                $sql = "UPDATE sanpham SET tensanpham = '$tensp', giatien = $giatien, loaisanpham = $loaisp, soluong = $soluong, hinh = '$hinh',detail = '$detail' WHERE idsanpham = $idsp";
                 $result = db_update($connection,$sql);
             }
             if($result){
-                header("location: /../View/danhsachsanpham.php");
+                header("location: ../View/danhsachsanpham.php");
             }else{
                 echo "Thêm thất bại";die();
             }

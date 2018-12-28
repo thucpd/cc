@@ -1,6 +1,5 @@
 <?php
     session_start();
-    include './header.php';
     include '../Controller/ProductController.php';
     if(isset($_POST['tensp'])){
         addProduct();
@@ -16,6 +15,8 @@
     }
     $result = editProduct();
     $listProductTypes = listProductType();
+    
+    include './header.php';
 ?>
 
 <div class="row">
@@ -52,6 +53,10 @@
                                     <div class="form-group">
                                         <label for="formGroupExampleInput2">Số lượng</label>
                                         <input type="text" class="form-control" name= "soluong" id="soluong" placeholder="Another input" value = "<?php if(!empty($result)) echo $result['soluong'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Thông tin sản phẩm</label>
+                                        <textarea rows="5" class="form-control" name = "detail" id = "detail" placeholder="Thông tin sản phẩm" value=""><?php if(!empty($result)) echo $result['detail'] ?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="formGroupExampleInput2">Hình</label>

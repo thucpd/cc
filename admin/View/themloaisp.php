@@ -1,6 +1,5 @@
 <?php
     session_start();
-    include './header.php';
     //include '../Controller/ProductController.php';
     include '../Controller/ProductTypeController.php';
     if(isset($_POST['tenloaisp'])){
@@ -13,6 +12,8 @@
         logOut();
     }
     $result = editProductType();
+    
+    include './header.php';
 ?>
 
 <div class="row">

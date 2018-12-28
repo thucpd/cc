@@ -48,7 +48,7 @@
                 <li <?php if($_SESSION['active_page'] == 2) echo 'class="active"'; ?>>
                     <a href="danhsachloaisp.php">
                         <i class="pe-7s-science"></i>
-                        <p>Table List</p>
+                        <p>Danh sách loại sản phẩm</p>
                     </a>
                 </li>
                 <li <?php if($_SESSION['active_page'] == 3) echo 'class="active"'; ?>>
@@ -77,7 +77,23 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Danh sách sản phẩm</a>
+                    <a class="navbar-brand" href="#">
+                    <?php switch($_SESSION['active_page']): 
+                        case 1: ?>
+                            <?php echo "Danh sách sản phẩm"; ?>
+                        <?php break; ?>
+                        <?php case 2: ?>
+                            <?php echo "Danh sách loại sản phẩm"; ?>
+                        <?php break; ?>
+                        <?php case 3: ?>
+                            <?php echo "Danh sách user"; ?>
+                        <?php break; ?>
+                        <?php case 4: ?>
+                            <?php echo "Danh sách hoá đơn"; ?>
+                        <?php break; ?>
+                        <?php endswitch; 
+                        ?>
+                    </a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">

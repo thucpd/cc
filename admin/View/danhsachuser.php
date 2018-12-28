@@ -9,12 +9,13 @@
     if(!isset($_SESSION['user_name'])){
         header('Location: index.php');
     }
-    include './header.php';
     include '../Controller/UserController.php';
     $results = listUser();
     if(isset($_GET['xoa_id'])){
         deleteUser($_GET['xoa_id']);
     }
+
+    include './header.php';
 ?>
             <div class="container-fluid">
                 <div class="row">

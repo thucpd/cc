@@ -10,12 +10,14 @@
     if(!isset($_SESSION['user_name'])){
         header('Location: index.php');
     }
-    include './header.php';
     include '../Controller/ProductTypeController.php';
     $results = listProductType();
     if(isset($_GET['xoa_id'])){
         deleteProductType($_GET['xoa_id']);
     }
+
+    
+    include './header.php';
 ?>
 <div class="container-fluid">
     <div class="row">

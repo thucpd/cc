@@ -3,7 +3,6 @@
 ?>
 <?php
     session_start();
-    include './header.php';
     //include '../Controller/ProductController.php';
     include '../Controller/UserController.php';
     if(isset($_POST['name'])){
@@ -20,6 +19,8 @@
     }
     $result = editUser();
     $listRoles = listRole();
+    
+    include './header.php';
 ?>
 
 <div class="row">

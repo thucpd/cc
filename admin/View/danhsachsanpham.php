@@ -9,9 +9,11 @@
     if(!isset($_SESSION['user_name'])){
         header('Location: index.php');
     }
-    include './header.php';
     include '../Controller/ProductController.php';
     $results = listProduct();
+
+    
+    include './header.php';
 ?>
             <div class="container-fluid">
                 <div class="row">
@@ -36,6 +38,7 @@
                             <th>Giá tiền</th>
                             <th>Loại sản phẩm</th>
                             <th>Số lượng sản phẩm</th>
+                            <th>Thông tin sản phẩm</th>
                             <th>Hình</th>
                             <th>Option</th>
                             </tr>
@@ -49,6 +52,7 @@
                                         <td> <?php echo $value['giatien'] ?></td>
                                         <td> <?php echo $value['loaisanpham'] ?></td>
                                         <td> <?php echo $value['soluong'] ?></td>
+                                        <td> <?php echo $value['detail'] ?></td>
                                         <td> 
                                             <div>
                                                 <img style="max-width: 65px;border-radius: 10px;" src="../Assets/img/admin/<?php echo $value['hinh'] ?>" alt="">
