@@ -13,7 +13,7 @@
     if(isset($_GET['logout']) == 1){
         logOut();
     }
-    $result = editProduct();
+    $result = editProduct(); 
     $listProductTypes = listProductType();
     
     include './header.php';

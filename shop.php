@@ -3,7 +3,18 @@
     include 'DB/db.php'; 
     include 'admin/Controller/Controller.php';
 
-    $banganday = listProduct();
+    $connection = db_connect();
+    if(isset($_POST['search']) && $_POST['search'] != ''){
+        $search = $_POST['search'];
+        $connection = db_connect();
+        $sql = "select * from sanpham where tensanpham like '%$search%' ";
+        $banganday = db_select($connection,$sql);
+        if(empty($banganday)){
+            header('Location: index.php');
+        }
+    }else{
+        $banganday = listProduct();
+    }
 ?>
 <!DOCTYPE html>
 <!--
@@ -54,6 +65,18 @@
                 </div>
                 
                 <div class="col-sm-6">
+                    <?php 
+                   
+                   if(isset($_SESSION['user'])) {?>
+                   
+                       <div class="shopping-item" for="login">
+                       <a id="login" href="dangnhap.php?logout=1"> <?php echo $_SESSION['user']['user_name'] ?> - Đăng xuất <span><i class="glyphicon glyphicon-log-out"></i></a>
+                       </div>
+                   <?php }else{ ?>
+                   <div class="shopping-item">
+                       <a href="dangnhap.php">Đăng nhập<span></a>
+                   </div>
+                   <?php }?>
                     <div class="shopping-item">
                         <a href="cart.php">Giỏ hàng - <span class="cart-amunt"></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><label id='count'></label></span></a>
                     </div>
@@ -80,7 +103,16 @@
           
                         <li><a href="cart.php">Giỏ hàng </a></li>
                         <li><a href="checkout.php">Thanh Toán</a></li>
+                        <?php if(isset($_SESSION['user'])) { ?> 
+                        <li><a href="info.php">Thông tin</a></li>
+                        <?php }?>
+                        
                         <li><a href="contact.php">Liên hệ</a></li>
+                        <li>
+                            <form action="shop.php" method="post" style="padding-top: 10px;">
+                            <input type="text" placeholder="Search" name = "search">
+                            </form>
+                        </li>
                     </ul>
                 </div>  
             </div>
@@ -106,7 +138,7 @@
                     <img class="product__image" src="admin/Assets/img/admin/<?php echo $v['hinh']?>" alt="" >
                     <h2><a href="single-product.php?id=<?php echo $v['idsanpham']?>" class="product__name"><?php echo $v['tensanpham']?></a></h2>
                     <h3 class="product__price"><?php echo $v['giatien']?> </h3> 
-                    <button class="add_to_cart_button" data-action="ADD_TO_CART"  >Thêm sản phẩm</button>      
+                    <button class="add_to_cart_button" data-action="ADD_TO_CART">Thêm sản phẩm</button>      
                 </div>
             <?php }?>
         </div>

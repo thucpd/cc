@@ -5,6 +5,7 @@
 
     $banganday = listProduct();
     $listbanner = getListBanner();
+    
 ?>
 
 
@@ -58,8 +59,22 @@
                 </div>
 
                 <div class="col-sm-6">
+                    <?php 
+                   
+                    if(isset($_SESSION['user'])) {?>
+                    
+                        <div class="shopping-item" for="login">
+                        <a id="login" href="dangnhap.php?logout=1"> <?php echo $_SESSION['user']['user_name'] ?> - Đăng xuất <span><i class="glyphicon glyphicon-log-out"></i></a>
+                        </div>
+                    <?php }else{ ?>
                     <div class="shopping-item">
-                        <a href="cart.php">Giỏ hàng - <span class="cart-amunt"></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><label id='count'></label></span></a>
+                        <a href="dangnhap.php">Đăng nhập <span><i class="glyphicon glyphicon-log-in"></i></a>
+                    </div>
+                    <?php }?>
+                    
+
+                    <div class="shopping-item">
+                        <a href="cart.php">Giỏ hàng -<span class="cart-amunt"></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><label id='count'></label></span></a>
                     </div>
                 </div>
             </div>
@@ -81,10 +96,18 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="index.php">Trang chủ</a></li>
                         <li><a href="shop.php">Trang Sản Phẩm</a></li>
-
                         <li><a href="cart.php">Giỏ hàng </a></li>
                         <li><a href="checkout.php">Thanh Toán</a></li>
+                        <?php if(isset($_SESSION['user'])) { ?> 
+                        <li><a href="info.php">Thông tin</a></li>
+                        <?php }?>
+                        
                         <li><a href="contact.php">Liên hệ</a></li>
+                        <li>
+                            <form action="shop.php" method="post" style="padding-top: 10px;">
+                            <input type="text" placeholder="Search" name = "search">
+                            </form>
+                        </li>
 
                     </ul>
                 </div>
@@ -154,7 +177,7 @@
                                     <div class="product-f-image">
                                         <img style="height: 270px;" src="admin/Assets/img/admin/<?php echo $v['hinh']?>" alt="">
                                         <div class="product-hover">
-                                            <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
+                                            <a href="#" class="add-to-cart-link" ><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
                                             <a href="single-product.php?id=<?php echo $v['idsanpham']?>" class="view-details-link"><i class="fa fa-link"></i> Chi tiết</a>
                                         </div>
                                     </div>

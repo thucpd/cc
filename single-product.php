@@ -2,8 +2,16 @@
     session_start();
     include 'DB/db.php'; 
     include 'admin/Controller/Controller.php';
+    if(isset($_POST['comment'])){
+        $id_sp = $_POST['sp_comment'];
+        $content = $_POST['content'];
+        addComment($_SESSION['user_id'],$id_sp,$content);
+        header('Location: single-product.php?id='.$id_sp);
+        die;
+    }
     if(isset($_GET['id']) && $_GET['id'] != ''){
         $product = getProduct($_GET['id']);
+        $id_sanpham = $product['idsanpham'];
         if($product == 0){
             echo "Sản phẩm ko tồn tại :D ?";die;
         }
@@ -11,9 +19,12 @@
         
         $banganday = listProduct2();
         $listproduct = listProduct3();
+        $comment = listComment($id_sanpham);
     }else{
         header('Location: index.php');
     }
+    
+
 
 ?>
 
@@ -66,6 +77,18 @@
                 </div>
                 
                 <div class="col-sm-6">
+                    <?php 
+                   
+                   if(isset($_SESSION['user'])) {?>
+                   
+                       <div class="shopping-item" for="login">
+                       <a id="login" href="dangnhap.php?logout=1"> <?php echo $_SESSION['user'] ?> - Đăng xuất<span></a>
+                       </div>
+                   <?php }else{ ?>
+                   <div class="shopping-item">
+                       <a href="dangnhap.php">Đăng nhập<span></a>
+                   </div>
+                   <?php }?>
                     <div class="shopping-item">
                         <a href="cart.php">Giỏ hàng - <span class="cart-amunt"></span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
                     </div>
@@ -196,23 +219,17 @@
                                             </div>
                                             <div role="tabpanel" class="tab-pane fade" id="profile">
                                                 <h2>Phản hồi</h2>
+                                                <?php if(isset($_SESSION['user'])) { ?>
                                                 <div class="submit-review">
-                                                    <p><label for="name">Name</label> <input name="name" type="text"></p>
-                                                    <p><label for="email">Email</label> <input name="email" type="email"></p>
-                                                    <div class="rating-chooser">
-                                                        <p>Your rating</p>
-
-                                                        <div class="rating-wrap-post">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                    </div>
-                                                    <p><label for="review">Phản hồi của bạn</label> <textarea name="review" id="" cols="30" rows="10"></textarea></p>
-                                                    <p><input type="submit" value="Submit"></p>
+                                                    <form action="single-product.php" method="POST">
+                                                        <input type="hidden" name="sp_comment" id="sp_comment" value="<?php echo $id_sanpham?>">
+                                                        <p><label for="review">Phản hồi của bạn</label> <textarea  id="content" name= "content" cols="30" rows="10"></textarea></p>
+                                                        <p><input type="submit" name="comment" value="Submit"></p>
+                                                    </form>
                                                 </div>
+                                                <?php } else { ?>
+                                                    <a href="dangnhap.php">Vui lòng đăng nhập trước khi để lại bình luận :D ?</a>
+                                                <?php }?>
                                             </div>
                                         </div>
                                     </div>
@@ -221,10 +238,30 @@
                             </div>
                         </div>
                         
-                        
+                        <div class="related-products-wrapper">
+                            <table class="table ">
+                                <thead>
+                                    <td>User</td>
+                                    <td>Comment</td>
+                                </thead>
+                                <?php if(!empty($comment)) {?>
+                                <?php foreach ($comment as $v) {?>
+                                    <tr>
+                                        <td> <?php echo $v['user_name']?></td>
+                                        <td> <?php echo $v['content']?></td>
+                                    </tr>
+                                <?php }?>
+                                <?php } else {?>
+                                    <tr>
+                                    <td colspan=2 style="text-align: center;"> Chưa có người nhận xét</td>
+                                    </tr>
+                                    <?php }?>
+                            </table>
+                        </div>
                         <div class="related-products-wrapper">
                             <h2 class="related-products-title">Sản phẩm liên quan</h2>
                             <div class="related-products-carousel">
+                            <?php if(!empty($splienquan))  {?>
                             <?php foreach($splienquan as $v) { ?>
                                 <div class="single-product">
                                     <div class="product-f-image">
@@ -239,7 +276,8 @@
                                         <ins><?php echo $v['giatien']?> đ</ins>
                                     </div> 
                                 </div>    
-                            <?php }?>                             
+                            <?php }?>    
+                            <?php }?>                           
                             </div>
                         </div>
                     </div>                    
@@ -341,5 +379,6 @@
     
     <!-- Main Script -->
     <script src="js/main.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

@@ -11,8 +11,6 @@
     }
     include '../Controller/ProductController.php';
     $results = listProduct();
-
-    
     include './header.php';
 ?>
             <div class="container-fluid">
@@ -58,7 +56,7 @@
                                                 <img style="max-width: 65px;border-radius: 10px;" src="../Assets/img/admin/<?php echo $value['hinh'] ?>" alt="">
                                             </div>
                                         <td>
-                                        <a href = "themsp.php?id=<?php echo $value['idsanpham']?>" class="btn btn-primary btn-fill">Sửa</a>
+                                        <a href = "themsp.php?id=<?php echo $value['idsanpham']?>" class="btn btn-primary btn-fill" title ="sửa">Sửa</a>
                                         <a href = "themsp.php?xoa_id=<?php echo $value['idsanpham']?>" class="btn btn-danger btn-fill">Xoá</a>
                                         </td>
                                     </tr>

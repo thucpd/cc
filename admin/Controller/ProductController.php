@@ -8,6 +8,7 @@
         $connection = db_connect();
         if(isset($_POST['search']) && $_POST['search'] != ''){
             $search = $_POST['search'];
+            //var_dump($search);die;
             $sql = "SELECT * FROM sanpham where deleted = 0 and tensanpham like '%$search%'";
             $results = db_select($connection,$sql);
         }else{
@@ -25,12 +26,14 @@
             $soluong = $_POST['soluong'];
             $detail = $_POST['detail'];
             /// Xử lý upload file
-    
+          
+            
             define ('SITE_ROOT', realpath(dirname(__FILE__)));
+            //var_dump($_FILES['hinh']);die;
             $uploads_dir = '../Assets/img/admin/';
             $tmp_name = $_FILES["hinh"]["tmp_name"];
-            $hinh = basename($_FILES["hinh"]["name"]);
-            
+            $hinh = ($_FILES["hinh"]["name"]);
+
             if($_POST['idsp'] == ''){
                 move_uploaded_file($tmp_name, $uploads_dir.$hinh);
                 $sql = "INSERT INTO sanpham (tensanpham, giatien, loaisanpham,soluong,hinh,detail) VALUES ('$tensp',$giatien,$loaisp,$soluong,'$hinh','$detail')";
@@ -60,10 +63,11 @@
                 $connection = db_connect();
             }
             $results = db_select($connection,$sql);
-            $result = $results[0];
+            // var_dump($results);die;
+            // $result = $results[0];
             //var_dump($result);die;
         }
-        return $result;
+        return $results;
     }
 
     function deleteProduct($id){
