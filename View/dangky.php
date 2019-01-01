@@ -1,5 +1,5 @@
 <?php
-    include 'DB/db.php'; 
+    include '../DB/db.php'; 
     session_start();
     $connection = db_connect();
     if(isset($_POST['submit'])){
@@ -28,15 +28,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 
 <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="../css/owl.carousel.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
 <div class="site-branding-area">
@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./"><img src="img/doremon.png"></a></h1>
+                        <h1><a href="./"><img src="../img/doremon.png"></a></h1>
                     </div>
                 </div>
 
@@ -72,11 +72,11 @@
                 <label for="formGroupExampleInput">Số điện thoại</label>
                 <input type="text" class="form-control" id="sdt" name = "sdt"  placeholder="Điện thoại">
             </div>
-            </div> <div class="form-group">
+            <div class="form-group">
                 <label for="formGroupExampleInput">Ngày sinh</label>
                 <input type="text" class="form-control" id="ngaysinh" name = "ngaysinh" placeholder="Ngày Sinh">
             </div>
-            </div> <div class="form-group">
+            <div class="form-group">
                 <label for="formGroupExampleInput">Địa chỉ</label>
                 <input type="text" class="form-control" id="diachi" name = "diachi" placeholder="Địa chỉ">
             </div>

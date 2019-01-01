@@ -1,5 +1,5 @@
 <?php
-    include 'DB/db.php'; 
+    include '../DB/db.php'; 
     session_start();
     
     //Kiểm tra session đăng nhập của user, để chuyển hướng qua trang khác
@@ -17,7 +17,7 @@
         $sql = "SELECT * FROM user where user_name = '$username' and password = '$password'";
         $result = db_select($connection,$sql);
         if($result){
-            // đăng nhập thành công thì chuyển hướng qua trang danhsachsanpham và lưu session
+            // đăng nhập thành công thì chuyển hướng qua trang index và lưu session
             $_SESSION['user'] = $result[0];
             $_SESSION['user_id'] = $result[0]['id'];    
             header('Location: index.php');
@@ -37,7 +37,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-<link rel="stylesheet" href="admin/Assets/css/style.css">
+<link rel="stylesheet" href="../admin/Assets/css/style.css">
 <div class="container">
     <div>
       <a href="dangky.php">Đăng ký</a>

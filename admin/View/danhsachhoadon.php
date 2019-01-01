@@ -30,9 +30,6 @@
             </form>
         </div>
     </div>
-    <div class="row" style="padding-bottom: 10px;">
-        <a href = "themloaisp.php" class="btn btn-info btn-fill pull-right">Thêm</a>
-    </div>
     <div class="row">
         <table class="table table-bordered">
             <thead>
@@ -51,8 +48,8 @@
                             <td> <?php echo $value['billing_last_name'] ?></td>
                             <td> <?php echo $value['gia'] ?></td>
                             <td>
-                            <a href = "themloaisp.php?idloaisp=<?php echo $value['id']?>" class="btn btn-primary btn-fill">Cập nhật hoá đơn<i class="pe-7s-edit"></i></a>
-                            <a href = "danhsachloaisp.php?xoa_id=<?php echo $value['id']?>" class="btn btn-danger btn-fill">Xoá hoá đơn<i class="pe-7s-trash"></i></a>
+                            <a href = "#" class="btn btn-primary btn-fill">Cập nhật hoá đơn<i class="pe-7s-edit"></i></a>
+                            <a href = "#" class="btn btn-danger btn-fill">Xoá hoá đơn<i class="pe-7s-trash"></i></a>
                             </td>
                         </tr>
                     <?php } ?>

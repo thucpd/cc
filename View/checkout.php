@@ -1,7 +1,7 @@
 <?php 
 session_start();
 //var_dump($_POST);die;
-include 'DB/db.php'; 
+include '../DB/db.php'; 
     if(!isset($_SESSION['user'])){
         echo "Vui lòng đăng nhập để thanh toán :D";die;
     }
@@ -22,7 +22,6 @@ include 'DB/db.php';
         }
     }
     if(isset($_POST['submit_checkout'])){
-        
         $user_id = $_POST['user_id'];
         $billing_last_name = $_POST['billing_last_name'];
         $billing_address_1 = $_POST['billing_address_1'];
@@ -57,7 +56,7 @@ include 'DB/db.php';
                 $result = db_insert($connection,$sql);
                 if($result){
                     unset($_SESSION['cart']);
-                    header('Locatin : end.php');
+                    header('Location: end.php');
                 }else{
                     echo "Thanh toán lỗi";
                 }
@@ -86,15 +85,15 @@ include 'DB/db.php';
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
     
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="../css/owl.carousel.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -111,7 +110,7 @@ include 'DB/db.php';
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./"><img src="img/doremon.png"></a></h1>
+                        <h1><a href="./"><img src="../img/doremon.png"></a></h1>
                     </div>
                 </div>
                 
@@ -178,28 +177,28 @@ include 'DB/db.php';
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Sản phẩm</h2>
                         <div class="thubmnail-recent">
-                            <img src="img/sukem.png" class="recent-thumb" alt="">
+                            <img src="../img/sukem.png" class="recent-thumb" alt="">
                             <h2><a href="single-product/sukem.php">Bánh su kem ngon</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>35.000 đ</ins> <del>50.000 đ</del>
                             </div>                             
                         </div>
                         <div class="thubmnail-recent">
-                            <img src="img/sukem2.png" class="recent-thumb" alt="">
+                            <img src="../img/sukem2.png" class="recent-thumb" alt="">
                             <h2><a href="single-product/sukem2.php">Bánh su kem loại 2 ngon</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>50.000 đ</ins> <del>75.000 đ</del>
                             </div>                             
                         </div>
                         <div class="thubmnail-recent">
-                            <img src="img/Tarts3.png" class="recent-thumb" alt="">
+                            <img src="../img/Tarts3.png" class="recent-thumb" alt="">
                             <h2><a href="single-product/Tart.php">Bánh tart ngon</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>35.000 đ</ins> <del>50.000 đ</del>
                             </div>                             
                         </div>
                         <div class="thubmnail-recent">
-                            <img src="img/product1.png" class="recent-thumb" alt="">
+                            <img src="../img/product1.png" class="recent-thumb" alt="">
                             <h2><a href="single-product/Cookie.php">Bánh Cookie ngon</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>35.000 đ</ins> <del>50.000 đ</del>
@@ -456,15 +455,15 @@ include 'DB/db.php';
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     
     <!-- jQuery sticky menu -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/jquery.sticky.js"></script>
     
     <!-- jQuery easing -->
-    <script src="js/jquery.easing.1.3.min.js"></script>
+    <script src="../js/jquery.easing.1.3.min.js"></script>
     
     <!-- Main Script -->
-    <script src="main.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/checkout.js"></script>
+    <script src="../main.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/checkout.js"></script>
   </body>
 </html>

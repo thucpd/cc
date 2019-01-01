@@ -1,7 +1,7 @@
 <?php
     session_start();
-    include 'DB/db.php'; 
-    include 'admin/Controller/Controller.php';
+    include '../DB/db.php'; 
+    include '../admin/Controller/Controller.php';
 
     $connection = db_connect();
     if(isset($_POST['search']) && $_POST['search'] != ''){
@@ -35,15 +35,15 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
     
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="../css/owl.carousel.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -60,7 +60,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./"><img src="img/doremon.png"></a></h1>
+                        <h1><a href="./"><img src="../img/doremon.png"></a></h1>
                     </div>
                 </div>
                 
@@ -135,7 +135,7 @@
         <div class="products">
             <?php foreach($banganday as $v) { ?>
                 <div class="product">
-                    <img class="product__image" src="admin/Assets/img/admin/<?php echo $v['hinh']?>" alt="" >
+                    <img class="product__image" src="../admin/Assets/img/admin/<?php echo $v['hinh']?>" alt="" >
                     <h2><a href="single-product.php?id=<?php echo $v['idsanpham']?>" class="product__name"><?php echo $v['tensanpham']?></a></h2>
                     <h3 class="product__price"><?php echo $v['giatien']?> </h3> 
                     <button class="add_to_cart_button" data-action="ADD_TO_CART">Thêm sản phẩm</button>      
@@ -158,13 +158,13 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     
     <!-- jQuery sticky menu -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/jquery.sticky.js"></script>
     
     <!-- jQuery easing -->
-    <script src="js/jquery.easing.1.3.min.js"></script>
-    <script src="main.js"></script>
+    <script src="../js/jquery.easing.1.3.min.js"></script>
+    <script src="../main.js"></script>
     <!-- Main Script -->
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
   </body>
 </html>

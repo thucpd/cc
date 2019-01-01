@@ -1,7 +1,7 @@
 <?php
     session_start();
-    include 'DB/db.php'; 
-    include 'admin/Controller/Controller.php';
+    include '../DB/db.php'; 
+    include '../admin/Controller/Controller.php';
     if(isset($_POST['comment'])){
         $id_sp = $_POST['sp_comment'];
         $content = $_POST['content'];
@@ -47,15 +47,15 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
     
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="../css/owl.carousel.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -72,7 +72,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./"><img src="img/logo.png"></a></h1>
+                        <h1><a href="./"><img src="../img/logo.png"></a></h1>
                     </div>
                 </div>
                 
@@ -82,7 +82,7 @@
                    if(isset($_SESSION['user'])) {?>
                    
                        <div class="shopping-item" for="login">
-                       <a id="login" href="dangnhap.php?logout=1"> <?php echo $_SESSION['user'] ?> - Đăng xuất<span></a>
+                       <a id="login" href="dangnhap.php?logout=1"> <?php echo $_SESSION['user']['user_name'] ?> - Đăng xuất<span></a>
                        </div>
                    <?php }else{ ?>
                    <div class="shopping-item">
@@ -152,7 +152,7 @@
                         <h2 class="sidebar-title">Sản phẩm</h2>
                         <?php foreach($listproduct as $v) {?>
                             <div class="thubmnail-recent">
-                                <img src="admin/Assets/img/admin/<?php echo $v['hinh']?>" class="recent-thumb" alt="">
+                                <img src="../admin/Assets/img/admin/<?php echo $v['hinh']?>" class="recent-thumb" alt="">
                                 <h2><a href="single-product.php?id=<?php echo $v['idsanpham']?>"><?php echo $v['tensanpham']?></a></h2>
                                 <div class="product-sidebar-price">
                                     <ins><?php echo $v['giatien']?></ins>
@@ -183,7 +183,7 @@
                             <div class="col-sm-6">
                                 <div class="product-images">
                                     <div class="product-main-img">
-                                        <img style= "height: 270px;" src="admin/Assets/img/admin/<?php if(isset($product)) echo $product['hinh']?>" alt="">
+                                        <img style= "height: 270px;" src="../admin/Assets/img/admin/<?php if(isset($product)) echo $product['hinh']?>" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -265,13 +265,13 @@
                             <?php foreach($splienquan as $v) { ?>
                                 <div class="single-product">
                                     <div class="product-f-image">
-                                        <img style="height: 270px;" src="admin/Assets/img/admin/<?php echo $v['hinh']?>" alt="">
+                                        <img style="height: 270px;" src="../admin/Assets/img/admin/<?php echo $v['hinh']?>" alt="">
                                         <div class="product-hover">
                                             <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
                                             <a href="single-product.php?id=<?php echo $v['idsanpham']?>" class="view-details-link"><i class="fa fa-link"></i> Xem chi tiết</a>
                                         </div>
                                     </div>
-                                    <h2><a href="single-product/Cookie.php"><?php echo $v['tensanpham']?></a></h2>
+                                    <h2><a href="single-product.php?id=<?php echo $v['idsanpham'] ?>"><?php echo $v['tensanpham']?></a></h2>
                                     <div class="product-carousel-price">
                                         <ins><?php echo $v['giatien']?> đ</ins>
                                     </div> 
@@ -371,14 +371,14 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     
     <!-- jQuery sticky menu -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/jquery.sticky.js"></script>
     
     <!-- jQuery easing -->
-    <script src="js/jquery.easing.1.3.min.js"></script>
+    <script src="../js/jquery.easing.1.3.min.js"></script>
     
     <!-- Main Script -->
-    <script src="js/main.js"></script>
-    <script src="main.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../main.js"></script>
   </body>
 </html>
