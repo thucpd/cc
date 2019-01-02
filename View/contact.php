@@ -17,15 +17,15 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
     
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/owl.carousel.css">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/responsive.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./"><img src="../img/doremon.png"></a></h1>
+                        <h1><a href="./"><img src="img/doremon.png"></a></h1>
                     </div>
                 </div>
                 
@@ -87,12 +87,12 @@
 			<div class="block-slider block-slider4">
 				<ul class="" id="bxslider-home4">
 					<li>
-						<img src="../img/h4slide.png" alt="Slide">
+						<img src="img/h4slide.png" alt="Slide">
 						<div class="caption-group">
 							    <a class="caption button-radius" href="#"><span class="icon"></span>Mua ngay</a>
 						</div>
 					</li>
-					<li><img src="../img/h4slide2.png" alt="Slide">
+					<li><img src="img/h4slide2.png" alt="Slide">
 						<div class="caption-group">
 							<h2 class="caption title">
 								Mua một tặng một <span class="primary">50% <strong>off</strong></span>
@@ -101,7 +101,7 @@
 							<a class="caption button-radius" href="#"><span class="icon"></span>Mua ngay</a>
 						</div>
 					</li>
-					<li><img src="../img/h4slide3.png" alt="Slide">
+					<li><img src="img/h4slide3.png" alt="Slide">
 						<div class="caption-group">
 							<h2 class="caption title">
 								Bánh <span class="primary">Rage <strong>Cake</strong></span>
@@ -110,7 +110,7 @@
 							<a class="caption button-radius" href="#"><span class="icon"></span>Mua ngay</a>
 						</div>
 					</li>
-					<li><img src="../img/h4slide4.png" alt="Slide">
+					<li><img src="img/h4slide4.png" alt="Slide">
 						<div class="caption-group">
 						  <h2 class="caption title">
 								Apple <span class="primary">Store <strong>Ipod</strong></span>
@@ -246,17 +246,17 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     
     <!-- jQuery sticky menu -->
-    <script src="../js/owl.carousel.min.js"></script>
-    <script src="../js/jquery.sticky.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
     
     <!-- jQuery easing -->
-    <script src="../js/jquery.easing.1.3.min.js"></script>
+    <script src="js/jquery.easing.1.3.min.js"></script>
     
     <!-- Main Script -->
-    <script src="../js/main.js"></script>
+    <script src="js/main.js"></script>
     
     <!-- Slider -->
-    <script type="text/javascript" src="../js/bxslider.min.js"></script>
-	<script type="text/javascript" src="../js/script.slider.js"></script>
+    <script type="text/javascript" src="js/bxslider.min.js"></script>
+	<script type="text/javascript" src="js/script.slider.js"></script>
   </body>
 </html>
