@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th1 01, 2019 lúc 01:48 PM
+-- Thời gian đã tạo: Th1 02, 2019 lúc 04:39 PM
 -- Phiên bản máy phục vụ: 5.7.23
 -- Phiên bản PHP: 7.2.10
 
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `bill` (
   `status` varchar(45) COLLATE utf8_unicode_ci DEFAULT '0',
   `gia` varchar(45) COLLATE utf8_unicode_ci DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `bill`
@@ -53,11 +53,8 @@ INSERT INTO `bill` (`id`, `billing_last_name`, `billing_address_1`, `billing_pho
 (3, 'Chương', 'llq', '113', NULL, '', '', '', '', '13', '0', '0'),
 (4, 'Chương', 'llq', '113', NULL, '', '', '', '', '13', '0', '155'),
 (5, 'Chương', 'llq', '113', NULL, '12313', '123123', '123123', '123123123', '13', '0', '738'),
-(6, 'Chương', 'llq', '113', NULL, '', '', '', '', '13', '0', '123'),
-(7, 'Chương', 'llq', '113', NULL, '', '', '', '', '13', '0', '123'),
-(8, 'Chương', 'llq', '113', NULL, '', '', '', '', '13', '0', '123'),
-(9, 'Chương', 'llq', '113', NULL, '', '', '', '', '13', '0', '123'),
-(10, 'Chương', 'llq', '113', NULL, '', '', '', '', '13', '0', '11107');
+(17, 'Phạm Văn A', 'LLQ', '113', NULL, '', '', '', '', '14', '0', '359'),
+(16, 'Phạm Văn A', 'LLQ', '113', NULL, '', '', '', '', '14', '0', '369');
 
 -- --------------------------------------------------------
 
@@ -73,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `bill_detail` (
   `gia` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `soluong` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `bill_detail`
@@ -91,20 +88,14 @@ INSERT INTO `bill_detail` (`id`, `ten_sanpham`, `id_bill`, `gia`, `soluong`) VAL
 (9, '', '5', '', ''),
 (10, 'sản phẩm thử1', '5', '123', '1'),
 (11, '123', '5', '123', '1'),
-(12, 'banner4', '5', '123', '1'),
-(13, 'sp1', '5', '123', '1'),
-(14, 'banner2', '5', '123', '1'),
-(15, 'banner3', '5', '123', '1'),
-(16, '', '6', '', ''),
-(17, '123', '6', '123', '1'),
-(18, '', '7', '', ''),
-(19, '123', '7', '123', '1'),
-(20, '', '8', '', ''),
-(21, '', '9', '', ''),
-(22, '123', '9', '123', '1'),
-(23, '', '10', '', ''),
-(24, '123', '10', '123', '1'),
-(25, 'banner4', '10', '123', '1'),
+(55, '', '17', '', ''),
+(56, 'banner4', '17', '123', '1'),
+(57, '123', '17', '123', '1'),
+(58, 'sản phẩm thử1', '17', '123', '1'),
+(52, 'banner4', '16', '123', '1'),
+(54, 'sản phẩm thử1', '16', '123', '1'),
+(53, '123', '16', '123', '1'),
+(51, '', '16', '', ''),
 (26, 'sản phẩm thử1', '10', '123', '1'),
 (27, 'banner2', '10', '123', '1'),
 (28, 'banner3', '10', '123', '1'),
@@ -112,7 +103,25 @@ INSERT INTO `bill_detail` (`id`, `ten_sanpham`, `id_bill`, `gia`, `soluong`) VAL
 (30, '123123', '10', '123', '1'),
 (31, '123123123', '10', '123', '1'),
 (32, 'bánh123123', '10', '123', '1'),
-(33, 'Bánh cc', '10', '10000', '1');
+(33, 'Bánh cc', '10', '10000', '1'),
+(34, '', '11', '', ''),
+(35, '123', '11', '123', '1'),
+(36, 'sản phẩm thử1', '11', '123', '1'),
+(37, '', '12', '', ''),
+(38, '123', '12', '123', '1'),
+(39, '', '13', '', ''),
+(40, '123', '13', '123', '1'),
+(41, '', '13', '', ''),
+(42, '', '14', '', ''),
+(43, 'banner4', '14', '123', '1'),
+(44, '123', '14', '123', '1'),
+(45, 'sản phẩm thử1', '14', '123', '1'),
+(46, '', '15', '', ''),
+(47, 'banner4', '15', '123', '1'),
+(48, '123', '15', '123', '1'),
+(49, 'sản phẩm thử1', '15', '123', '1'),
+(50, '', '15', '', ''),
+(59, '', '17', '', '');
 
 -- --------------------------------------------------------
 
@@ -137,6 +146,29 @@ INSERT INTO `comment` (`id`, `content`, `id_sanpham`, `user`) VALUES
 (9, 'dfffdf', 46, 13),
 (8, 'sản phẩm ngon quá', 41, 13),
 (7, 'sản phẩm rất ngon', 43, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `coupon`
+--
+
+DROP TABLE IF EXISTS `coupon`;
+CREATE TABLE IF NOT EXISTS `coupon` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `price` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `type` int(11) NOT NULL DEFAULT '0',
+  `used` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `coupon`
+--
+
+INSERT INTO `coupon` (`id`, `code`, `price`, `type`, `used`) VALUES
+(1, 'abc', '10', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -279,7 +311,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `diachi` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `user`
@@ -287,8 +319,10 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `user_name`, `password`, `deleted`, `sdt`, `ngaysinh`, `diachi`, `name`) VALUES
 (1, 'tuan', '1', '0', NULL, NULL, NULL, 'Tuấn'),
-(13, 'abc', '1', '0', '113', '1/1/2019', 'llq', 'Chương'),
-(14, 'abc', '1', '0', '113', '12/11/1212', 'LLQ', 'Phạm Văn A');
+(13, 'abc', ' abc', '0', '113', '1/1/2019', 'llq', 'Chương123123'),
+(14, 'abc', '1', '0', '113', '12/11/1212', 'LLQ', 'Phạm Văn A'),
+(15, 'abc', 'abc', '0', '113', '1/1/2019', 'llq', 'Chương'),
+(16, '1234', '1', '0', '123', '123', '123', 'thuc');
 
 -- --------------------------------------------------------
 
