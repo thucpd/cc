@@ -15,8 +15,16 @@ function applycoupon() {
         dataType: 'json', 
         data: {coupon: coupon}, 
         success: function(success){
-            console.log(success)
+            if(success.status == true){
+                $('#last_price').html(success.gia);
+                alert('Sử dụng mã giảm giá thành công');
+            }else{
+                if(success.code == 1){
+                    alert('Mã giảm giá không tồn tại');
+                }else{
+                    alert('vui lòng điền mã giảm giá');
+                }
+            }
         }
-       
     });
 }

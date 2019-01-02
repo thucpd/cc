@@ -34,7 +34,12 @@ include '../DB/db.php';
             
         }
         //isert bill
-        $gia = $_SESSION['cart']['total_price'];
+        if(isset($_SESSION['cart']['total_price2'])){
+            $gia = $_SESSION['cart']['total_price2'];
+        }else{
+            $gia = $_SESSION['cart']['total_price'];
+        }
+
         $sql = "insert into bill(gia,user_id,billing_last_name,billing_address_1,billing_phone,billing_last_name2,billing_address_2,billing_phone2,order_comments)
             values ($gia,$user_id,'$billing_last_name','$billing_address_1','$billing_phone','$billing_last_name2','$billing_address_2','$billing_phone2','$order_comments');
             ";
@@ -367,7 +372,7 @@ include '../DB/db.php';
                         <?php }?>
                             <tr>
                                 <td>Tổng</td>
-                                <td  colspan=2 ><?php echo $_SESSION['cart']['total_price']?></td>
+                                <td id="last_price"  colspan=2 ><?php echo $_SESSION['cart']['total_price']?></td>
                             </tr>
                         </tbody>
                     </table>

@@ -12,10 +12,17 @@
             $result = db_select($connection,$sql);
             if($result){
                 $gia = $result[0]['price'];
-                $_SESSION['cart']['total_price'] -= $gia;
-                $response["gia"] =  $_SESSION['cart']['total_price'];          
+                $_SESSION['cart']['total_price2'] = $_SESSION['cart']['total_price'] - $gia;
+                $response["status"] =  true;     
+                $response["gia"] =  $_SESSION['cart']['total_price2'];        
+            }else{
+                $response["status"] =  false;     
+                $response["code"] =  1;    
             }
+        }else{
+            $response["status"] =  false;     
+            $response["code"] =  2;    
         }
     }  
-    return json_encode($response);
+    echo json_encode($response);die;
 ?>
