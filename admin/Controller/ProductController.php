@@ -54,7 +54,7 @@
     }
 
     function editProduct(){
-        $result = '';
+        $results = '';
         $connection = db_connect();
         if(isset($_GET['id'])){
             $id = $_GET['id'];
