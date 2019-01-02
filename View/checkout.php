@@ -65,6 +65,7 @@ include '../DB/db.php';
             echo "thanh toán lỗi";
         }
     }
+
 ?>
 <!DOCTYPE html>
 <!--
@@ -263,7 +264,7 @@ include '../DB/db.php';
                                 </p>
 
                                 <p class="form-row form-row-last">
-                                    <input type="submit" value="Apply Coupon" name="apply_coupon" class="button">
+                                    <button type="button" class="button" onclick="applycoupon()" style="background-color: #5a88ca">Apply Coupon</button>
                                 </p>
 
                                 <div class="clear"></div>
@@ -362,7 +363,12 @@ include '../DB/db.php';
                                 <td><?php echo  $item['price']?></td>
                                 <td><?php echo $item['total']?></td>
                             </tr>
+                      
                         <?php }?>
+                            <tr>
+                                <td>Tổng</td>
+                                <td  colspan=2 ><?php echo $_SESSION['cart']['total_price']?></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -462,7 +468,7 @@ include '../DB/db.php';
     <script src="../js/jquery.easing.1.3.min.js"></script>
     
     <!-- Main Script -->
-    <script src="../main.js"></script>
+    <!-- <script src="../main.js"></script> -->
     <script src="../js/main.js"></script>
     <script src="../js/checkout.js"></script>
   </body>
