@@ -64,10 +64,10 @@
             }
             $results = db_select($connection,$sql);
             // var_dump($results);die;
-            // $result = $results[0];
+             $result = $results[0];
             //var_dump($result);die;
         }
-        return $results;
+        return $result;
     }
 
     function deleteProduct($id){
