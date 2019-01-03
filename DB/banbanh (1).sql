@@ -1,34 +1,31 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
--- https://www.phpmyadmin.net/
+-- version 4.1.14
+-- http://www.phpmyadmin.net
 --
--- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th1 02, 2019 lúc 04:39 PM
--- Phiên bản máy phục vụ: 5.7.23
--- Phiên bản PHP: 7.2.10
+-- Client :  127.0.0.1
+-- Généré le :  Mer 02 Janvier 2019 à 19:31
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Cơ sở dữ liệu: `banbanh`
+-- Base de données :  `banbanh`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `bill`
+-- Structure de la table `bill`
 --
 
-DROP TABLE IF EXISTS `bill`;
 CREATE TABLE IF NOT EXISTS `bill` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `billing_last_name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -43,10 +40,10 @@ CREATE TABLE IF NOT EXISTS `bill` (
   `status` varchar(45) COLLATE utf8_unicode_ci DEFAULT '0',
   `gia` varchar(45) COLLATE utf8_unicode_ci DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
 --
--- Đang đổ dữ liệu cho bảng `bill`
+-- Contenu de la table `bill`
 --
 
 INSERT INTO `bill` (`id`, `billing_last_name`, `billing_address_1`, `billing_phone`, `ship_to_different_address`, `billing_last_name2`, `billing_address_2`, `billing_phone2`, `order_comments`, `user_id`, `status`, `gia`) VALUES
@@ -59,10 +56,9 @@ INSERT INTO `bill` (`id`, `billing_last_name`, `billing_address_1`, `billing_pho
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `bill_detail`
+-- Structure de la table `bill_detail`
 --
 
-DROP TABLE IF EXISTS `bill_detail`;
 CREATE TABLE IF NOT EXISTS `bill_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten_sanpham` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -70,10 +66,10 @@ CREATE TABLE IF NOT EXISTS `bill_detail` (
   `gia` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `soluong` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=60 ;
 
 --
--- Đang đổ dữ liệu cho bảng `bill_detail`
+-- Contenu de la table `bill_detail`
 --
 
 INSERT INTO `bill_detail` (`id`, `ten_sanpham`, `id_bill`, `gia`, `soluong`) VALUES
@@ -126,20 +122,19 @@ INSERT INTO `bill_detail` (`id`, `ten_sanpham`, `id_bill`, `gia`, `soluong`) VAL
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `comment`
+-- Structure de la table `comment`
 --
 
-DROP TABLE IF EXISTS `comment`;
 CREATE TABLE IF NOT EXISTS `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `content` varchar(2000) COLLATE utf8_unicode_ci DEFAULT 'null',
   `id_sanpham` int(11) NOT NULL,
   `user` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
--- Đang đổ dữ liệu cho bảng `comment`
+-- Contenu de la table `comment`
 --
 
 INSERT INTO `comment` (`id`, `content`, `id_sanpham`, `user`) VALUES
@@ -150,10 +145,9 @@ INSERT INTO `comment` (`id`, `content`, `id_sanpham`, `user`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `coupon`
+-- Structure de la table `coupon`
 --
 
-DROP TABLE IF EXISTS `coupon`;
 CREATE TABLE IF NOT EXISTS `coupon` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -161,10 +155,10 @@ CREATE TABLE IF NOT EXISTS `coupon` (
   `type` int(11) NOT NULL DEFAULT '0',
   `used` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- Đang đổ dữ liệu cho bảng `coupon`
+-- Contenu de la table `coupon`
 --
 
 INSERT INTO `coupon` (`id`, `code`, `price`, `type`, `used`) VALUES
@@ -173,47 +167,45 @@ INSERT INTO `coupon` (`id`, `code`, `price`, `type`, `used`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product_type`
+-- Structure de la table `product_type`
 --
 
-DROP TABLE IF EXISTS `product_type`;
 CREATE TABLE IF NOT EXISTS `product_type` (
   `id_product_type` int(11) NOT NULL AUTO_INCREMENT,
   `type_name` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `deleted` int(11) DEFAULT '0',
   PRIMARY KEY (`id_product_type`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
--- Đang đổ dữ liệu cho bảng `product_type`
+-- Contenu de la table `product_type`
 --
 
 INSERT INTO `product_type` (`id_product_type`, `type_name`, `deleted`) VALUES
-(1, 'bánh ngọt', 0),
+(1, 'Bánh Ngọt', 0),
 (2, 'bánh mặn', 1),
-(3, 'bánh xe', 0),
-(4, 'bánh xe', 0),
+(3, 'Bánh Mặn', 0),
+(4, 'Bánh Nướng', 0),
 (5, 'bánh xe', 1),
-(6, '123', 0),
+(6, '123', 1),
 (7, 'bánh bbb', 1),
-(8, 'banner', 0);
+(8, 'banner', 1);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `role`
+-- Structure de la table `role`
 --
 
-DROP TABLE IF EXISTS `role`;
 CREATE TABLE IF NOT EXISTS `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `deleted` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
--- Đang đổ dữ liệu cho bảng `role`
+-- Contenu de la table `role`
 --
 
 INSERT INTO `role` (`id`, `name`, `deleted`) VALUES
@@ -225,10 +217,9 @@ INSERT INTO `role` (`id`, `name`, `deleted`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sanpham`
+-- Structure de la table `sanpham`
 --
 
-DROP TABLE IF EXISTS `sanpham`;
 CREATE TABLE IF NOT EXISTS `sanpham` (
   `idsanpham` int(11) NOT NULL AUTO_INCREMENT,
   `tensanpham` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -239,68 +230,36 @@ CREATE TABLE IF NOT EXISTS `sanpham` (
   `detail` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
   `deleted` int(11) DEFAULT '0',
   PRIMARY KEY (`idsanpham`)
-) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=66 ;
 
 --
--- Đang đổ dữ liệu cho bảng `sanpham`
+-- Contenu de la table `sanpham`
 --
 
 INSERT INTO `sanpham` (`idsanpham`, `tensanpham`, `giatien`, `loaisanpham`, `soluong`, `hinh`, `detail`, `deleted`) VALUES
-(1, 'bánh 1234123', '1000', '1', 10, '03-deo-dau-xanh-hat-dua-e1505892838355.png', NULL, 1),
-(2, 'bánh 2', '2000', '2', 10, NULL, NULL, 1),
-(3, 'Bánh cc', '10000', '2', 1000, 'demo', NULL, 1),
-(4, 'Bánh cc', '10000', '1', 1000, '02-hat-sen-dua-tuoi-600x600.png', NULL, 0),
-(6, 'Bánh cc', '10000', '1', 1000, 'B0009-00.png', NULL, 0),
-(8, 'bánh123123', '123', '6', 123, 'banh su.png', NULL, 0),
-(9, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(7, 'Bánh cc', '10000', '2', 1000, 'demo', NULL, 1),
-(10, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(11, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(12, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(13, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(14, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(15, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(16, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(17, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(18, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(19, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(20, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(21, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(22, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(23, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(24, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(25, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(26, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(27, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(28, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(29, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(30, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(31, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(32, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(33, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(34, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(35, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(36, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(37, '123123', '123', '4', 123, 'brand1.png', NULL, 0),
-(38, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(39, '123123', '123', '4', 123, 'brand1.png', NULL, 1),
-(40, '123123', '123', '4', 123, '03-deo-dau-xanh-hat-dua-e1505892838355.png', NULL, 0),
-(41, '123123123', '123', '4', 123, 'gourmet-cookies-2.png', NULL, 0),
-(42, '123', '123', '1', 123, '', '123123', 0),
-(43, 'sp1', '123', '8', 123, 'h4slide.png', 'banner1', 0),
-(44, 'banner2', '123', '8', 123, 'h4slide2.png', 'banner2 nè ', 0),
-(45, 'banner3', '123', '8', 123, 'h4slide3.png', 'banner3', 0),
-(46, 'banner4', '123', '8', 123123, 'h4slide4.png', '123123123', 0),
-(47, '123', '123', '1', 123123, 'brand2.png', '123123', 0),
-(48, 'sản phẩm thử1', '123', '4', 123123123, 'h4-slide7.png', '123123hdgaf', 0);
+(16, 'Bánh Mì Thơm Giòn', '22', '4', 54, 'banh-mi-thom-gion.jpg', '', 0),
+(14, 'Bánh Bông Lan', '65', '4', 32, 'loai-banh-bong-lan.jpg', '', 0),
+(8, 'Bánh Cam', '25', '3', 34, 'cam.jpg', 'ngon :))', 0),
+(15, 'Bánh Trung Thu', '12', '4', 67, 'loai-banh-trung-thu.jpg', '', 0),
+(13, 'Bánh Quy Bơ', '28', '4', 12, 'loai-banh-quy-bo.jpg', '', 0),
+(12, 'Bánh Đúc Miền tây', '38', '3', 44, 'banh duc man mien tay.jpg', '', 0),
+(11, 'Bánh Mì Pizza', '40', '3', 19, 'pizza.jpg', '', 0),
+(10, 'Bánh Khúc Giáng Sinh', '55', '1', 21, 'giangsinh.jpg', '', 0),
+(9, 'Bánh Đa Nem', '23', '3', 47, 'da nem.jpg', '', 0),
+(7, 'Bánh Pasty', '62', '1', 64, 'gourmet-cookies-2.png', '', 0),
+(6, 'Bánh Tark', '76', '1', 24, '36672-3_fa077c90-2858-4a39-9fd3-b2490f3b1fad.png', '', 0),
+(1, 'Bánh Cookie', '50', '1', 20, 'Tarts3.png', '', 0),
+(2, 'Bánh Galic', '70', '1', 30, '03-deo-dau-xanh-hat-dua-e1505892838355.png', '', 0),
+(5, 'Bánh Honey', '100', '1', 23, 'product4.png', '', 0),
+(3, 'Bánh Fruit Cake', '80', '1', 43, 'product5.png', '', 0),
+(4, 'Bánh Sukem', '75', '1', 53, 'sukem2.png', '', 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user`
+-- Structure de la table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -311,10 +270,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   `diachi` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
 
 --
--- Đang đổ dữ liệu cho bảng `user`
+-- Contenu de la table `user`
 --
 
 INSERT INTO `user` (`id`, `user_name`, `password`, `deleted`, `sdt`, `ngaysinh`, `diachi`, `name`) VALUES
@@ -327,10 +286,9 @@ INSERT INTO `user` (`id`, `user_name`, `password`, `deleted`, `sdt`, `ngaysinh`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user_admin`
+-- Structure de la table `user_admin`
 --
 
-DROP TABLE IF EXISTS `user_admin`;
 CREATE TABLE IF NOT EXISTS `user_admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
@@ -340,10 +298,10 @@ CREATE TABLE IF NOT EXISTS `user_admin` (
   `name` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `avata` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
 
 --
--- Đang đổ dữ liệu cho bảng `user_admin`
+-- Contenu de la table `user_admin`
 --
 
 INSERT INTO `user_admin` (`id`, `user_name`, `password`, `role`, `deleted`, `name`, `avata`) VALUES
@@ -367,7 +325,6 @@ INSERT INTO `user_admin` (`id`, `user_name`, `password`, `role`, `deleted`, `nam
 (18, '123', '123', 4, 1, '123', 'brand1.png'),
 (19, '123', '123', 4, 1, '123', 'brand1.png'),
 (20, '123', '123', 4, 1, '123', 'brand1.png');
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

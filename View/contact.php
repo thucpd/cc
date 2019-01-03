@@ -49,7 +49,7 @@
                 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="cart.html">Giỏ hàng - <span class="cart-amunt"></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><label id='count'></label></span></a>
+                        <a href="cart.php">Giỏ hàng - <span class="cart-amunt"></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><label id='count'></label></span></a>
                     </div>
                 </div>
             </div>
@@ -69,12 +69,12 @@
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">Trang chủ</a></li>
-                        <li><a href="shop.html">Trang Sản Phẩm</a></li>
+                        <li class="active"><a href="index.php">Trang chủ</a></li>
+                        <li><a href="shop.php">Trang Sản Phẩm</a></li>
                        
-                        <li><a href="cart.html">Giỏ hàng </a></li>
-                        <li><a href="checkout.html">Thanh Toán</a></li>
-                        <li><a href="contact.html">Liên hệ</a></li>
+                        <li><a href="cart.php">Giỏ hàng </a></li>
+                        <li><a href="checkout.php">Thanh Toán</a></li>
+                        <li><a href="contact.php">Liên hệ</a></li>
                   
                     </ul>
                 </div>  
